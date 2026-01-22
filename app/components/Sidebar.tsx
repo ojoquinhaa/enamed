@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   Squares2X2Icon,
@@ -64,7 +65,7 @@ export default function Sidebar({
 
   return (
     <aside
-      className={`fixed left-0 top-0 z-50 h-screen w-60 border-r border-[color:var(--border-200)] bg-white transition-transform duration-200 ${
+      className={`fixed left-0 top-0 z-50 h-screen w-60 border-r border-border bg-white transition-transform duration-200 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } lg:translate-x-0`}
     >
@@ -76,10 +77,13 @@ export default function Sidebar({
             target="_blank"
             rel="noreferrer"
           >
-            <img
+            <Image
               src="/images/enamed-logo.png"
               alt="Enamed"
+              width={220}
+              height={96}
               className="h-12 w-auto max-w-full"
+              priority
             />
           </a>
         </div>
@@ -93,12 +97,12 @@ export default function Sidebar({
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2 text-sm font-medium transition ${
                   item.isActive
-                    ? "bg-[color:var(--brand-900)] text-white"
-                    : "text-slate-700 hover:bg-[color:var(--surface-soft)]"
+                    ? "bg-brand text-white"
+                    : "text-slate-700 hover:bg-(--surface-soft)"
                 }`}
                 onClick={() => onClose?.()}
               >
-                <Icon className="h-4 w-4 text-[color:inherit]" />
+                <Icon className="h-4 w-4 text-inherit" />
                 <span>{item.label}</span>
               </Link>
             );
@@ -111,7 +115,7 @@ export default function Sidebar({
             <span className="text-slate-600">{formatDate(lastUpdated)}</span>
           </div>
           <a
-            className="mt-3 inline-flex text-xs font-semibold text-[color:var(--brand-900)]"
+            className="mt-3 inline-flex text-xs font-semibold text-brand"
             href="https://www.gov.br/mec/pt-br/assuntos/noticias/2026/janeiro/enamed-divulgadas-avaliacao-dos-cursos-de-medicina-e-medidas-de-supervisao"
             target="_blank"
             rel="noreferrer"

@@ -21,12 +21,10 @@ export default function BarList({ items }: BarListProps) {
               {item.display ?? item.value.toString()}
             </span>
           </div>
-          <div className="h-2 rounded-md bg-[color:var(--surface-soft)]">
+          <div className="h-2 rounded-md bg-(--surface-soft)">
             <div
               className={`h-2 rounded-md ${
-                item.tone === "soft"
-                  ? "bg-[color:var(--brand-200)]"
-                  : "bg-[color:var(--brand-900)]"
+                item.tone === "soft" ? "bg-brand-soft" : "bg-brand"
               }`}
               style={{ width: `${(item.value / max) * 100}%` }}
             />

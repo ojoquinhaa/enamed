@@ -3,28 +3,28 @@ import DashboardShell from "../components/DashboardShell";
 export default function SobrePage() {
   return (
     <DashboardShell active="sobre" lastUpdated={null}>
-      <section className="rounded-md border border-[color:var(--border-200)] bg-white p-4">
+      <section className="rounded-md border border-border bg-white p-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
               ENAMED
             </p>
-            <h1 className="text-2xl font-semibold text-[color:var(--ink-900)]">
+            <h1 className="text-2xl font-semibold text-foreground">
               Sobre
             </h1>
           </div>
           <div className="flex items-center gap-2 text-xs font-semibold">
-            <span className="rounded-md border border-[color:var(--border-200)] bg-white px-3 py-1 text-slate-600">
+            <span className="rounded-md border border-border bg-white px-3 py-1 text-slate-600">
               MEC
             </span>
-            <span className="rounded-md bg-[color:var(--brand-900)] px-3 py-1 text-white">
+            <span className="rounded-md bg-brand px-3 py-1 text-white">
               2025
             </span>
           </div>
         </div>
       </section>
 
-      <article className="rounded-md border border-[color:var(--border-200)] bg-white p-6 text-sm leading-7 text-slate-700">
+      <article className="rounded-md border border-border bg-white p-6 text-sm leading-7 text-slate-700">
         <h2 className="text-base font-semibold text-slate-900">
           Enamed: divulgadas avaliacao dos cursos de medicina e medidas de
           supervisao
@@ -76,11 +76,11 @@ export default function SobrePage() {
             mostrando as instituicoes que estao tendo um bom desempenho e que
             precisam melhorar. Para ele, e fundamental que os medicos tenham uma
             boa formacao para garantir o atendimento dos cidadaos nos hospitais,
-            postos de saude e Unidades de Pronto Atendimento (UPAs). "Ha uma
+            postos de saude e Unidades de Pronto Atendimento (UPAs). &quot;Ha uma
             grande preocupacao nos ministerios da Educacao e da Saude em
             assegurar que os cursos oferecidos aos alunos brasileiros possam
             garantir a qualidade da formacao medica nesse pais, ate porque sao
-            profissionais que cuidam da vida das pessoas".
+            profissionais que cuidam da vida das pessoas&quot;.
           </p>
           <p>
             Santana destacou que os resultados do Enamed mostraram que 85% dos
@@ -88,19 +88,19 @@ export default function SobrePage() {
             ressaltou que mais de 80% dos cursos superiores de medicina no
             Brasil sao oferecidos por instituicoes de ensino superior privadas e
             que instituicoes que cobram mensalidade dos alunos devem apresentar
-            qualidade no ensino. "O que estamos avaliando e se os cursos tem uma
+            qualidade no ensino. &quot;O que estamos avaliando e se os cursos tem uma
             boa infraestrutura, se eles tem monitoria, laboratorio, se tem bons
             professores. E isso a gente so pode fazer avaliando os resultados e,
-            tambem, dialogando com as instituicoes para que possam melhorar",
+            tambem, dialogando com as instituicoes para que possam melhorar&quot;,
             considerou.
           </p>
           <p>
             Sobre as medidas aplicadas as universidades cujos concluintes nao
             atingiram o nivel minimo de aprendizagem ao final do curso - como a
             supervisao ou a suspensao das graduacoes - Santana destacou que
-            nenhum aluno sera prejudicado. Segundo ele, o objetivo "nao e
+            nenhum aluno sera prejudicado. Segundo ele, o objetivo &quot;nao e
             aplicar sancoes ou penalidades intencionais a qualquer instituicao,
-            mas assegurar a formacao de medicos de qualidade no Brasil".
+            mas assegurar a formacao de medicos de qualidade no Brasil&quot;.
           </p>
         </div>
 
@@ -200,10 +200,10 @@ export default function SobrePage() {
           </p>
           <p>
             As instituicoes privadas com fins lucrativos tiveram 15.409
-            estudantes participantes, sendo 57,2% deles com resultado proficiente
-            no curso de medicina; e as instituicoes privadas sem fins lucrativos
-            foram representadas por 12.960 estudantes, dos quais 70,1%
-            alcancaram a proficiencia.
+            estudantes participantes, sendo 57,2% deles com resultado
+            proficiente no curso de medicina; e as instituicoes privadas sem
+            fins lucrativos foram representadas por 12.960 estudantes, dos quais
+            70,1% alcancaram a proficiencia.
           </p>
         </div>
 
@@ -248,21 +248,21 @@ export default function SobrePage() {
           <h3 className="text-sm font-semibold text-slate-900">Enamed</h3>
           <p>
             O Exame Nacional de Avaliacao da Formacao Medica sera realizado
-            anualmente, com inicio em 2025, e unificara as matrizes de referencia
-            e os instrumentos de avaliacao no ambito do Enade para os cursos de
-            medicina e da prova objetiva de acesso direto ao Enare. O novo exame
-            possui relevancia estrategica nacional, no escopo da avaliacao da
-            formacao medica no Brasil, e seus resultados impactam diretamente o
-            Sistema Unico de Saude (SUS) e o ingresso de novos medicos no mercado
-            de trabalho.
+            anualmente, com inicio em 2025, e unificara as matrizes de
+            referencia e os instrumentos de avaliacao no ambito do Enade para os
+            cursos de medicina e da prova objetiva de acesso direto ao Enare. O
+            novo exame possui relevancia estrategica nacional, no escopo da
+            avaliacao da formacao medica no Brasil, e seus resultados impactam
+            diretamente o Sistema Unico de Saude (SUS) e o ingresso de novos
+            medicos no mercado de trabalho.
           </p>
           <p>
             O MEC prospecta um ciclo de fortalecimento mutuo entre os exames.
             Para o ministerio, o Enamed impulsiona o engajamento dos estudantes
-            no Enade, tendo em vista que a nota pode servir como meio de ingresso
-            em programas de residencia medica de acesso direto. Isso tem impacto
-            positivo para o Enare, visto que todos os concluintes dos cursos de
-            medicina passarao a fazer a prova anualmente.
+            no Enade, tendo em vista que a nota pode servir como meio de
+            ingresso em programas de residencia medica de acesso direto. Isso
+            tem impacto positivo para o Enare, visto que todos os concluintes
+            dos cursos de medicina passarao a fazer a prova anualmente.
           </p>
           <p>
             O novo resultado, baseado em padroes de desempenho, traz um
@@ -278,11 +278,11 @@ export default function SobrePage() {
             dos estudantes na realizacao do exame e resultados mais fidedignos
             para avaliacao dos cursos. Alem disso, os resultados baseados em
             padroes de desempenho fornecem informacoes mais completas e passam a
-            subsidiar melhor as politicas de regulacao, supervisao, financiamento
-            e inducao da qualidade dos cursos. A periodicidade anual de
-            realizacao do exame garante que todos os alunos passem pela prova,
-            ampliando a amostra de estudantes avaliados e minimizando os riscos
-            de resultados enviesados. Alem de garantir que o ingresso na
+            subsidiar melhor as politicas de regulacao, supervisao,
+            financiamento e inducao da qualidade dos cursos. A periodicidade
+            anual de realizacao do exame garante que todos os alunos passem pela
+            prova, ampliando a amostra de estudantes avaliados e minimizando os
+            riscos de resultados enviesados. Alem de garantir que o ingresso na
             residencia seja mais qualificado.
           </p>
         </div>

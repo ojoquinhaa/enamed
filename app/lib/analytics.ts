@@ -82,7 +82,8 @@ export const getParticipationRate = (
   participantes: number,
   inscritos: number,
 ) => {
-  if (!Number.isFinite(participantes) || !Number.isFinite(inscritos)) return null;
+  if (!Number.isFinite(participantes) || !Number.isFinite(inscritos))
+    return null;
   if (inscritos <= 0) return null;
   return participantes / inscritos;
 };
@@ -183,7 +184,9 @@ const addToAccumulator = (acc: GroupAccumulator, row: EnamedRow) => {
   const participantes = Number.isFinite(row.participantes)
     ? (row.participantes as number)
     : 0;
-  const inscritos = Number.isFinite(row.inscritos) ? (row.inscritos as number) : 0;
+  const inscritos = Number.isFinite(row.inscritos)
+    ? (row.inscritos as number)
+    : 0;
   const conceito = getConceptNumber(row.conceito);
   const prof = Number.isFinite(row.percentualAcimaProficiencia)
     ? (row.percentualAcimaProficiencia as number)
@@ -222,13 +225,20 @@ const addToAccumulator = (acc: GroupAccumulator, row: EnamedRow) => {
 };
 
 const finalizeAccumulator = (acc: GroupAccumulator): GroupStat => {
-  const conceptAvg = acc.conceptCount ? acc.conceptSum / acc.conceptCount : null;
+  const conceptAvg = acc.conceptCount
+    ? acc.conceptSum / acc.conceptCount
+    : null;
   const profAvg = acc.profCount ? acc.profSum / acc.profCount : null;
   const conceptWeighted = acc.weightSum
     ? acc.conceptWeightedSum / acc.weightSum
     : null;
-  const profWeighted = acc.weightSum ? acc.profWeightedSum / acc.weightSum : null;
-  const participationRate = getParticipationRate(acc.participants, acc.inscritos);
+  const profWeighted = acc.weightSum
+    ? acc.profWeightedSum / acc.weightSum
+    : null;
+  const participationRate = getParticipationRate(
+    acc.participants,
+    acc.inscritos,
+  );
   const performanceAvg = acc.performanceCount
     ? acc.performanceSum / acc.performanceCount
     : null;
@@ -271,7 +281,9 @@ export const buildCourseStats = (rows: EnamedRow[]): CourseStat[] =>
     const participantes = Number.isFinite(row.participantes)
       ? (row.participantes as number)
       : 0;
-    const inscritos = Number.isFinite(row.inscritos) ? (row.inscritos as number) : 0;
+    const inscritos = Number.isFinite(row.inscritos)
+      ? (row.inscritos as number)
+      : 0;
     const acimaProficiencia = Number.isFinite(row.totalAcimaProficiencia)
       ? (row.totalAcimaProficiencia as number)
       : null;

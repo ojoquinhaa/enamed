@@ -37,7 +37,7 @@ export default function StatGrid({
       {items.map((item) => (
         <div
           key={item.label}
-          className={`rounded-md border border-[color:var(--border-200)] bg-white ${styles.card} ${
+          className={`rounded-md border border-border bg-white ${styles.card} ${
             align === "center" ? "text-center" : ""
           }`}
         >
@@ -48,9 +48,7 @@ export default function StatGrid({
           </p>
           <p
             className={`${styles.value} font-semibold ${
-              item.tone === "brand"
-                ? "text-[color:var(--brand-900)]"
-                : "text-slate-900"
+              item.tone === "brand" ? "text-brand" : "text-slate-900"
             }`}
           >
             {item.value}

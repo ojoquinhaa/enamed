@@ -32,7 +32,7 @@ export default function MiniTable({ columns, rows }: MiniTableProps) {
           {rows.map((row, index) => (
             <tr
               key={`row-${index}`}
-              className="rounded-md bg-[color:var(--surface-soft)] text-slate-700"
+              className="rounded-md bg-(--surface-soft) text-slate-700"
             >
               {row.map((cell, cellIndex) => (
                 <td

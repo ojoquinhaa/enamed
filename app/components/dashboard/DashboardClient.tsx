@@ -53,7 +53,10 @@ const buildOptions = (values: string[], allLabel: string): OptionItem[] => [
   ...values.map((value) => ({ label: value, value })),
 ];
 
-export default function DashboardClient({ rows, options }: DashboardClientProps) {
+export default function DashboardClient({
+  rows,
+  options,
+}: DashboardClientProps) {
   const [filters, setFilters] = useState<FilterState>({
     uf: "all",
     ies: "all",
@@ -95,8 +98,8 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
       )
         return false;
       if (!searchTerm) return true;
-      const haystack = `${row.nomeIes} ${row.siglaIes} ${row.municipioCurso}`
-        .toLowerCase();
+      const haystack =
+        `${row.nomeIes} ${row.siglaIes} ${row.municipioCurso}`.toLowerCase();
       return haystack.includes(searchTerm);
     });
   }, [filters, rows]);
@@ -197,10 +200,13 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
   );
 
   const totalCourses = courseStats.length;
-  const totalParticipants = sum(courseStats.map((course) => course.participantes));
+  const totalParticipants = sum(
+    courseStats.map((course) => course.participantes),
+  );
   const totalInscritos = sum(courseStats.map((course) => course.inscritos));
-  const uniqueIes = new Set(filteredRows.map((row) => row.nomeIes).filter(Boolean))
-    .size;
+  const uniqueIes = new Set(
+    filteredRows.map((row) => row.nomeIes).filter(Boolean),
+  ).size;
 
   const profMedia = average(
     courseStats
@@ -243,9 +249,7 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
 
   const ufTopByParticipants = useMemo(
     () =>
-      [...ufStats]
-        .sort((a, b) => b.participants - a.participants)
-        .slice(0, 10),
+      [...ufStats].sort((a, b) => b.participants - a.participants).slice(0, 10),
     [ufStats],
   );
 
@@ -267,7 +271,10 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
       [...ufStats]
         .map((item) => ({
           ...item,
-          excellence: getExcellenceIndex(item.conceptWeighted, item.profWeighted),
+          excellence: getExcellenceIndex(
+            item.conceptWeighted,
+            item.profWeighted,
+          ),
         }))
         .sort((a, b) => (b.excellence ?? 0) - (a.excellence ?? 0))
         .slice(0, 10),
@@ -295,7 +302,8 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
     () =>
       [...ufStats]
         .map((item) => {
-          const high = (item.conceptDist["4"] ?? 0) + (item.conceptDist["5"] ?? 0);
+          const high =
+            (item.conceptDist["4"] ?? 0) + (item.conceptDist["5"] ?? 0);
           return {
             label: item.label,
             value: item.courses ? (high / item.courses) * 100 : 0,
@@ -310,7 +318,8 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
     () =>
       [...ufStats]
         .map((item) => {
-          const low = (item.conceptDist["1"] ?? 0) + (item.conceptDist["2"] ?? 0);
+          const low =
+            (item.conceptDist["1"] ?? 0) + (item.conceptDist["2"] ?? 0);
           return {
             label: item.label,
             value: item.courses ? (low / item.courses) * 100 : 0,
@@ -352,7 +361,8 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
   }, [iesStats, totalParticipants]);
 
   const participantsValues = useMemo(
-    () => courseStats.map((course) => course.participantes).filter((v) => v > 0),
+    () =>
+      courseStats.map((course) => course.participantes).filter((v) => v > 0),
     [courseStats],
   );
 
@@ -401,7 +411,8 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
   const simulatedTarget90 = totalParticipants ? totalParticipants * 0.9 : null;
 
   const smallCourses = courseStats.filter(
-    (course) => course.participantes > 0 && course.participantes <= smallThreshold,
+    (course) =>
+      course.participantes > 0 && course.participantes <= smallThreshold,
   );
   const largeCourses = courseStats.filter(
     (course) => course.participantes >= largeThreshold,
@@ -448,10 +459,10 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
         (course) =>
           typeof course.conceito === "number" && course.participantes > 0,
       )
-      .map((course) => [course.participantes, course.conceito as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participantes, course.conceito as number] as [number, number],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
@@ -461,10 +472,13 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
         (course) =>
           typeof course.proficiencia === "number" && course.participantes > 0,
       )
-      .map((course) => [course.participantes, course.proficiencia as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participantes, course.proficiencia as number] as [
+            number,
+            number,
+          ],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
@@ -474,10 +488,13 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
         (course) =>
           typeof course.performance === "number" && course.participantes > 0,
       )
-      .map((course) => [course.participantes, course.performance as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participantes, course.performance as number] as [
+            number,
+            number,
+          ],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
@@ -488,10 +505,13 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
           typeof course.participacao === "number" &&
           typeof course.proficiencia === "number",
       )
-      .map((course) => [course.participacao as number, course.proficiencia as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participacao as number, course.proficiencia as number] as [
+            number,
+            number,
+          ],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
@@ -502,10 +522,13 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
           typeof course.participacao === "number" &&
           typeof course.conceito === "number",
       )
-      .map((course) => [course.participacao as number, course.conceito as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participacao as number, course.conceito as number] as [
+            number,
+            number,
+          ],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
@@ -516,24 +539,30 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
           typeof course.participacao === "number" &&
           typeof course.performance === "number",
       )
-      .map((course) => [course.participacao as number, course.performance as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (course) =>
+          [course.participacao as number, course.performance as number] as [
+            number,
+            number,
+          ],
+      );
     return correlation(pairs);
   }, [courseStats]);
 
   const corrIesCoursesPerformance = useMemo(() => {
     const pairs = iesStats
       .filter((item) => typeof item.performanceAvg === "number")
-      .map((item) => [item.courses, item.performanceAvg as number] as [
-        number,
-        number,
-      ]);
+      .map(
+        (item) =>
+          [item.courses, item.performanceAvg as number] as [number, number],
+      );
     return correlation(pairs);
   }, [iesStats]);
 
-  const ufCoursesLow = quantile(ufStats.map((item) => item.courses), 0.25);
+  const ufCoursesLow = quantile(
+    ufStats.map((item) => item.courses),
+    0.25,
+  );
   const ufPerfHigh = quantile(
     ufStats
       .map((item) => item.performanceAvg)
@@ -541,7 +570,10 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
     0.75,
   );
 
-  const iesCoursesHigh = quantile(iesStats.map((item) => item.courses), 0.75);
+  const iesCoursesHigh = quantile(
+    iesStats.map((item) => item.courses),
+    0.75,
+  );
   const iesPerfLow = quantile(
     iesStats
       .map((item) => item.performanceAvg)
@@ -619,10 +651,7 @@ export default function DashboardClient({ rows, options }: DashboardClientProps)
     () =>
       ufStats
         .filter((item) => typeof item.participationRate === "number")
-        .sort(
-          (a, b) =>
-            (a.participationRate ?? 0) - (b.participationRate ?? 0),
-        )
+        .sort((a, b) => (a.participationRate ?? 0) - (b.participationRate ?? 0))
         .slice(0, 8),
     [ufStats],
   );

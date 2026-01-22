@@ -14,7 +14,7 @@ export default function SectionCard({
   children,
 }: SectionCardProps) {
   return (
-    <section className="min-w-0 rounded-md border border-[color:var(--border-200)] bg-white p-5">
+    <section className="min-w-0 rounded-md border border-border bg-white p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex flex-col gap-1">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">

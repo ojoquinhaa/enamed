@@ -18,9 +18,9 @@ export default function DashboardShell({
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[color:var(--tone-0)] text-[color:var(--ink-900)]">
+    <div className="min-h-screen bg-background text-foreground">
       <button
-        className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--border-200)] bg-white text-slate-600 shadow-sm transition hover:border-[color:var(--brand-900)] hover:text-[color:var(--brand-900)] lg:hidden"
+        className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-slate-600 shadow-sm transition hover:border-brand hover:text-brand lg:hidden"
         type="button"
         aria-label={navOpen ? "Fechar menu" : "Abrir menu"}
         aria-expanded={navOpen}

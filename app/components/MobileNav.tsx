@@ -6,21 +6,19 @@ type MobileNavProps = {
 
 export default function MobileNav({ active }: MobileNavProps) {
   return (
-    <div className="flex items-center justify-between gap-3 rounded-md border border-[color:var(--border-200)] bg-white p-3 lg:hidden">
+    <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-white p-3 lg:hidden">
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
           Enamed
         </p>
-        <p className="text-lg font-semibold text-[color:var(--ink-900)]">
-          Medicina 2025
-        </p>
+        <p className="text-lg font-semibold text-foreground">Medicina 2025</p>
       </div>
       <div className="flex gap-2">
         <Link
           className={`rounded-md px-3 py-2 text-xs font-semibold transition ${
             active === "dashboard"
-              ? "bg-[color:var(--brand-900)] text-white"
-              : "border border-[color:var(--border-200)] bg-white text-slate-600"
+              ? "bg-brand text-white"
+              : "border border-border bg-white text-slate-600"
           }`}
           href="/"
         >
@@ -29,8 +27,8 @@ export default function MobileNav({ active }: MobileNavProps) {
         <Link
           className={`rounded-md px-3 py-2 text-xs font-semibold transition ${
             active === "ranking"
-              ? "bg-[color:var(--brand-900)] text-white"
-              : "border border-[color:var(--border-200)] bg-white text-slate-600"
+              ? "bg-brand text-white"
+              : "border border-border bg-white text-slate-600"
           }`}
           href="/ranking"
         >
@@ -39,8 +37,8 @@ export default function MobileNav({ active }: MobileNavProps) {
         <Link
           className={`rounded-md px-3 py-2 text-xs font-semibold transition ${
             active === "mapas"
-              ? "bg-[color:var(--brand-900)] text-white"
-              : "border border-[color:var(--border-200)] bg-white text-slate-600"
+              ? "bg-brand text-white"
+              : "border border-border bg-white text-slate-600"
           }`}
           href="/mapas"
         >
@@ -49,8 +47,8 @@ export default function MobileNav({ active }: MobileNavProps) {
         <Link
           className={`rounded-md px-3 py-2 text-xs font-semibold transition ${
             active === "sobre"
-              ? "bg-[color:var(--brand-900)] text-white"
-              : "border border-[color:var(--border-200)] bg-white text-slate-600"
+              ? "bg-brand text-white"
+              : "border border-border bg-white text-slate-600"
           }`}
           href="/sobre"
         >
@@ -59,8 +57,8 @@ export default function MobileNav({ active }: MobileNavProps) {
         <Link
           className={`rounded-md px-3 py-2 text-xs font-semibold transition ${
             active === "tabela"
-              ? "bg-[color:var(--brand-900)] text-white"
-              : "border border-[color:var(--border-200)] bg-white text-slate-600"
+              ? "bg-brand text-white"
+              : "border border-border bg-white text-slate-600"
           }`}
           href="/tabela"
         >
@@ -70,4 +68,3 @@ export default function MobileNav({ active }: MobileNavProps) {
     </div>
   );
 }
-

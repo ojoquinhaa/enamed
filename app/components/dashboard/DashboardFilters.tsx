@@ -31,7 +31,7 @@ const FilterSelect = ({
       {label}
     </span>
     <select
-      className="w-full rounded-md border border-[color:var(--border-200)] bg-white px-3 py-2 text-sm text-slate-700 focus:border-[color:var(--brand-900)] focus:outline-none"
+      className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
       value={value}
       onChange={(event) => onChange(event.target.value)}
     >
@@ -52,7 +52,7 @@ export default function DashboardFilters({
   resultCount,
 }: DashboardFiltersProps) {
   return (
-    <section className="rounded-md border border-[color:var(--border-200)] bg-white p-5">
+    <section className="rounded-md border border-border bg-white p-5">
       <div className="grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
         <div className="grid min-w-0 gap-4 sm:grid-cols-2">
           <FilterSelect
@@ -80,13 +80,13 @@ export default function DashboardFilters({
             options={options.categorias}
           />
         </div>
-        <div className="flex min-w-0 flex-col gap-4 rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] p-4">
+        <div className="flex min-w-0 flex-col gap-4 rounded-md border border-border bg-(--surface-soft) p-4">
           <label className="flex min-w-0 flex-col gap-2 text-sm text-slate-600">
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
               Busca
             </span>
             <input
-              className="w-full rounded-md border border-[color:var(--border-200)] bg-white px-3 py-2 text-sm text-slate-700 focus:border-[color:var(--brand-900)] focus:outline-none"
+              className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
               placeholder="IES, municipio ou sigla"
               value={filters.search}
               onChange={(event) => onChange({ search: event.target.value })}
@@ -97,7 +97,7 @@ export default function DashboardFilters({
               {resultCount} registros
             </span>
             <button
-              className="rounded-md border border-[color:var(--border-200)] px-3 py-1 font-semibold text-slate-600 transition hover:border-[color:var(--brand-900)] hover:text-[color:var(--brand-900)]"
+              className="rounded-md border border-border px-3 py-1 font-semibold text-slate-600 transition hover:border-brand hover:text-brand"
               type="button"
               onClick={onClear}
             >

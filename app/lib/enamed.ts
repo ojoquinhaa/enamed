@@ -99,9 +99,9 @@ const parseRow = (row: Record<string, unknown>): EnamedRow => {
     totalAcimaProficiencia: toNumber(
       pickValue(normalized, KEY_MAP.totalAcimaProficiencia),
     ),
-  percentualAcimaProficiencia: normalizePercent(
-    toNumber(pickValue(normalized, KEY_MAP.percentualAcimaProficiencia)),
-  ),
+    percentualAcimaProficiencia: normalizePercent(
+      toNumber(pickValue(normalized, KEY_MAP.percentualAcimaProficiencia)),
+    ),
     conceito: toText(pickValue(normalized, KEY_MAP.conceito)),
   };
 };
@@ -147,4 +147,3 @@ export const getEnamedData = cache(async (): Promise<EnamedData> => {
     lastUpdated: stats?.mtime ? stats.mtime.toISOString() : null,
   };
 });
-

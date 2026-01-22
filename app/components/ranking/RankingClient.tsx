@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { EnamedOptions, EnamedRow } from "../../lib/enamed-types";
 import {
   buildCourseStats,
@@ -85,7 +85,7 @@ const FilterSelect = ({
       {label}
     </span>
     <select
-      className="rounded-md border border-[color:var(--border-200)] bg-white px-3 py-2 text-sm text-slate-700 focus:border-[color:var(--brand-900)] focus:outline-none"
+      className="rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
       value={value}
       onChange={(event) => onChange(event.target.value)}
     >
@@ -321,13 +321,14 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
       .slice(0, 10);
   }, [courseStats, iesRanking]);
 
-  useEffect(() => {
+  const updateFilters = (next: Partial<FilterState>) => {
+    setFilters((prev) => ({ ...prev, ...next }));
     setPage(1);
-  }, [filters, rankOrder]);
+  };
 
   return (
     <div className="flex flex-col gap-6">
-      <section className="rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] p-4 text-xs text-slate-600">
+      <section className="rounded-md border border-border bg-(--surface-soft) p-4 text-xs text-slate-600">
         <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
           Legenda e calculos
         </div>
@@ -353,43 +354,39 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
           </p>
         </div>
       </section>
-      <section className="rounded-md border border-[color:var(--border-200)] bg-white p-5">
+      <section className="rounded-md border border-border bg-white p-5">
         <div className="grid gap-4 lg:grid-cols-[1.4fr_0.6fr]">
           <div className="grid gap-4 md:grid-cols-2">
             <FilterSelect
               label="UF"
               value={filters.uf}
-              onChange={(value) => setFilters((prev) => ({ ...prev, uf: value }))}
+              onChange={(value) => updateFilters({ uf: value })}
               options={ufOptions}
             />
             <FilterSelect
               label="Organizacao"
               value={filters.organizacao}
-              onChange={(value) =>
-                setFilters((prev) => ({ ...prev, organizacao: value }))
-              }
+              onChange={(value) => updateFilters({ organizacao: value })}
               options={orgOptions}
             />
             <FilterSelect
               label="Categoria"
               value={filters.categoria}
-              onChange={(value) =>
-                setFilters((prev) => ({ ...prev, categoria: value }))
-              }
+              onChange={(value) => updateFilters({ categoria: value })}
               options={categoriaOptions}
             />
           </div>
-          <div className="flex flex-col gap-4 rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] p-4">
+          <div className="flex flex-col gap-4 rounded-md border border-border bg-(--surface-soft) p-4">
             <label className="flex flex-col gap-2 text-sm text-slate-600">
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
                 Busca
               </span>
               <input
-                className="rounded-md border border-[color:var(--border-200)] bg-white px-3 py-2 text-sm text-slate-700 focus:border-[color:var(--brand-900)] focus:outline-none"
+                className="rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
                 placeholder="IES"
                 value={filters.search}
                 onChange={(event) =>
-                  setFilters((prev) => ({ ...prev, search: event.target.value }))
+                  updateFilters({ search: event.target.value })
                 }
               />
             </label>
@@ -398,10 +395,10 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
                 {iesRanking.length} IES
               </span>
               <button
-                className="rounded-md border border-[color:var(--border-200)] px-3 py-1 font-semibold text-slate-600 transition hover:border-[color:var(--brand-900)] hover:text-[color:var(--brand-900)]"
+                className="rounded-md border border-border px-3 py-1 font-semibold text-slate-600 transition hover:border-brand hover:text-brand"
                 type="button"
                 onClick={() =>
-                  setFilters({
+                  updateFilters({
                     uf: "all",
                     organizacao: "all",
                     categoria: "all",
@@ -423,11 +420,12 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
           <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
             <span>Ordenacao</span>
             <select
-              className="rounded-md border border-[color:var(--border-200)] bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-[color:var(--brand-900)] focus:outline-none"
+              className="rounded-md border border-border bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-brand focus:outline-none"
               value={rankOrder}
-              onChange={(event) =>
-                setRankOrder(event.target.value === "asc" ? "asc" : "desc")
-              }
+              onChange={(event) => {
+                setRankOrder(event.target.value === "asc" ? "asc" : "desc");
+                setPage(1);
+              }}
             >
               {orderOptions.map((option) => (
                 <option key={`rank-order-${option.value}`} value={option.value}>
@@ -440,7 +438,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
       >
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-slate-600">
           <span className="uppercase tracking-[0.2em]">Score ajust.</span>
-          <span className="rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] px-3 py-2">
+          <span className="rounded-md border border-border bg-(--surface-soft) px-3 py-2">
             Pagina {page} de {totalPages}
           </span>
         </div>
@@ -463,7 +461,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
               {pageRows.map((row, index) => (
                 <tr
                   key={`${row.label}-${row.key}`}
-                  className="rounded-md bg-[color:var(--surface-soft)] text-slate-700"
+                  className="rounded-md bg-(--surface-soft) text-slate-700"
                 >
                   <td className="px-4 py-3 font-semibold text-slate-700">
                     {index + 1 + (page - 1) * pageSize}
@@ -480,7 +478,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
                   <td className="px-4 py-3 text-right font-semibold text-slate-700">
                     {numberFormatter.format(row.participants)}
                   </td>
-                  <td className="px-4 py-3 text-right font-semibold text-[color:var(--brand-900)]">
+                  <td className="px-4 py-3 text-right font-semibold text-brand">
                     {formatPercent(row.profAvg)}
                   </td>
                   <td className="px-4 py-3 text-right text-slate-700">
@@ -495,7 +493,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
           </table>
 
           {pageRows.length === 0 ? (
-            <div className="mt-6 rounded-md border border-[color:var(--border-200)] bg-white p-6 text-center text-sm text-slate-500">
+            <div className="mt-6 rounded-md border border-border bg-white p-6 text-center text-sm text-slate-500">
               Sem dados.
             </div>
           ) : null}
@@ -507,7 +505,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
           </div>
           <div className="flex items-center gap-2">
             <button
-              className="rounded-md border border-[color:var(--border-200)] px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-[color:var(--brand-900)] hover:text-[color:var(--brand-900)] disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-md border border-border px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
               type="button"
               disabled={page === 1}
               onClick={() => setPage((prev) => Math.max(1, prev - 1))}
@@ -515,7 +513,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
               Anterior
             </button>
             <button
-              className="rounded-md border border-[color:var(--border-200)] px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-[color:var(--brand-900)] hover:text-[color:var(--brand-900)] disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-md border border-border px-4 py-2 text-xs font-semibold text-slate-600 transition hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
               type="button"
               disabled={page === totalPages}
               onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
@@ -584,10 +582,7 @@ export default function RankingClient({ rows, options }: RankingClientProps) {
         description="Menor variacao interna por IES."
       >
         <MiniTable
-          columns={[
-            { label: "IES" },
-            { label: "Indice", align: "right" },
-          ]}
+          columns={[{ label: "IES" }, { label: "Indice", align: "right" }]}
           rows={iesConsistency.map((item) => [
             item.label,
             item.consistency ? item.consistency.toFixed(2) : "-",

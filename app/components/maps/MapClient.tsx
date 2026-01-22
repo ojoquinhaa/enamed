@@ -4,7 +4,11 @@ import { useEffect, useMemo, useState, type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import * as echarts from "echarts";
 import type { EnamedOptions, EnamedRow } from "../../lib/enamed-types";
-import { buildGroupStats, getExcellenceIndex, normalizeText } from "../../lib/analytics";
+import {
+  buildGroupStats,
+  getExcellenceIndex,
+  normalizeText,
+} from "../../lib/analytics";
 import DashboardFilters from "../dashboard/DashboardFilters";
 import type { FilterState, OptionItem } from "../dashboard/types";
 import {
@@ -105,15 +109,13 @@ const metricDefs: MetricDef[] = [
     id: "participantes",
     label: "Participantes",
     mapValue: (stat) => stat.participants,
-    display: (value) =>
-      value === null ? "-" : numberFormatter.format(value),
+    display: (value) => (value === null ? "-" : numberFormatter.format(value)),
   },
   {
     id: "cursos",
     label: "Cursos",
     mapValue: (stat) => stat.courses,
-    display: (value) =>
-      value === null ? "-" : numberFormatter.format(value),
+    display: (value) => (value === null ? "-" : numberFormatter.format(value)),
   },
 ];
 
@@ -129,7 +131,7 @@ const ChartShell = ({
   title: string;
   children: ReactNode;
 }) => (
-  <div className="rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] p-4">
+  <div className="rounded-md border border-border bg-(--surface-soft) p-4">
     <div className="flex items-center justify-between gap-3">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
         {title}
@@ -223,7 +225,8 @@ export default function MapClient({ rows, options }: MapClientProps) {
       )
         return false;
       if (!searchTerm) return true;
-      const haystack = `${row.nomeIes} ${row.siglaIes} ${row.municipioCurso}`.toLowerCase();
+      const haystack =
+        `${row.nomeIes} ${row.siglaIes} ${row.municipioCurso}`.toLowerCase();
       return haystack.includes(searchTerm);
     });
   }, [filters, rows]);
@@ -238,14 +241,11 @@ export default function MapClient({ rows, options }: MapClientProps) {
     [filteredRows],
   );
 
-  useEffect(() => {
-    if (!ufStats.length) {
-      setSelectedUf(null);
-      return;
+  const resolvedSelectedUf = useMemo(() => {
+    if (selectedUf && ufStats.some((item) => item.label === selectedUf)) {
+      return selectedUf;
     }
-    if (!selectedUf || !ufStats.some((item) => item.label === selectedUf)) {
-      setSelectedUf(ufStats[0]?.label ?? null);
-    }
+    return ufStats[0]?.label ?? null;
   }, [selectedUf, ufStats]);
 
   const metricDef = useMemo(
@@ -292,14 +292,16 @@ export default function MapClient({ rows, options }: MapClientProps) {
     return map;
   }, [ufStats]);
 
-  const selectedUfStat = selectedUf ? ufSummary.get(selectedUf) : null;
+  const selectedUfStat = resolvedSelectedUf
+    ? ufSummary.get(resolvedSelectedUf)
+    : null;
   const selectedUfConcept =
     selectedUfStat?.conceptWeighted ?? selectedUfStat?.conceptAvg ?? null;
 
   const selectedRows = useMemo(() => {
-    if (!selectedUf) return filteredRows;
-    return filteredRows.filter((row) => row.uf === selectedUf);
-  }, [filteredRows, selectedUf]);
+    if (!resolvedSelectedUf) return filteredRows;
+    return filteredRows.filter((row) => row.uf === resolvedSelectedUf);
+  }, [filteredRows, resolvedSelectedUf]);
 
   const iesStatsInUf = useMemo(() => {
     const stats = buildGroupStats(
@@ -401,7 +403,7 @@ export default function MapClient({ rows, options }: MapClientProps) {
           data: mapData.map((item) => ({
             ...item,
             itemStyle:
-              selectedUf && item.uf === selectedUf
+              resolvedSelectedUf && item.uf === resolvedSelectedUf
                 ? {
                     areaColor: "#0ea5e9",
                     borderColor: "#0284c7",
@@ -412,7 +414,7 @@ export default function MapClient({ rows, options }: MapClientProps) {
         },
       ],
     };
-  }, [mapData, mapRange, nameToUf, selectedUf, tooltipData]);
+  }, [mapData, mapRange, nameToUf, resolvedSelectedUf, tooltipData]);
 
   const onEvents = useMemo(
     () => ({
@@ -447,7 +449,7 @@ export default function MapClient({ rows, options }: MapClientProps) {
         resultCount={filteredRows.length}
       />
 
-      <section className="rounded-md border border-[color:var(--border-200)] bg-[color:var(--surface-soft)] p-4 text-xs text-slate-600">
+      <section className="rounded-md border border-border bg-(--surface-soft) p-4 text-xs text-slate-600">
         <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
           Legenda e calculos
         </div>
@@ -478,11 +480,9 @@ export default function MapClient({ rows, options }: MapClientProps) {
           <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
             <span>Metrica</span>
             <select
-              className="rounded-md border border-[color:var(--border-200)] bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-[color:var(--brand-900)] focus:outline-none"
+              className="rounded-md border border-border bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-brand focus:outline-none"
               value={metricId}
-              onChange={(event) =>
-                setMetricId(event.target.value as MetricId)
-              }
+              onChange={(event) => setMetricId(event.target.value as MetricId)}
             >
               {metricDefs.map((metric) => (
                 <option key={metric.id} value={metric.id}>
@@ -494,13 +494,13 @@ export default function MapClient({ rows, options }: MapClientProps) {
         }
       >
         <div className="grid min-w-0 gap-6 xl:grid-cols-[1.6fr_0.8fr] xl:items-start">
-          <div className="min-w-0 rounded-md border border-[color:var(--border-200)] bg-white p-4">
+          <div className="min-w-0 rounded-md border border-border bg-white p-4">
             <ChartShell title="Mapa interativo">
               <span className="text-[11px] text-slate-400">
                 {metricDef.label}
               </span>
             </ChartShell>
-            <div className="mt-4 h-[420px] sm:h-[520px] lg:h-[620px]">
+            <div className="mt-4 h-105 sm:h-130 lg:h-155">
               {mapReady ? (
                 <ReactECharts
                   option={mapOption}
@@ -508,21 +508,21 @@ export default function MapClient({ rows, options }: MapClientProps) {
                   style={{ height: "100%", width: "100%" }}
                 />
               ) : (
-                <div className="flex h-full items-center justify-center rounded-md border border-dashed border-[color:var(--border-200)] text-sm text-slate-400">
+                <div className="flex h-full items-center justify-center rounded-md border border-dashed border-border text-sm text-slate-400">
                   Carregando mapa...
                 </div>
               )}
             </div>
           </div>
-          <div className="flex min-w-0 flex-col gap-4 xl:max-h-[720px] xl:overflow-y-auto xl:pr-1">
-            <div className="rounded-md border border-[color:var(--border-200)] bg-white p-4">
+          <div className="flex min-w-0 flex-col gap-4 xl:max-h-180 xl:overflow-y-auto xl:pr-1">
+            <div className="rounded-md border border-border bg-white p-4">
               <div className="flex items-center justify-between">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
                   UF selecionada
                 </p>
                 <select
-                  className="rounded-md border border-[color:var(--border-200)] bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-[color:var(--brand-900)] focus:outline-none"
-                  value={selectedUf ?? ""}
+                  className="rounded-md border border-border bg-white px-2 py-1 text-[11px] text-slate-600 focus:border-brand focus:outline-none"
+                  value={resolvedSelectedUf ?? ""}
                   onChange={(event) =>
                     setSelectedUf(event.target.value || null)
                   }
@@ -581,7 +581,7 @@ export default function MapClient({ rows, options }: MapClientProps) {
               </div>
             </div>
 
-            <div className="rounded-md border border-[color:var(--border-200)] bg-white p-4">
+            <div className="rounded-md border border-border bg-white p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">
                 Top IES na UF
               </p>

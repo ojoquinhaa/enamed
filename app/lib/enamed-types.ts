@@ -31,4 +31,3 @@ export type EnamedData = {
   options: EnamedOptions;
   lastUpdated: string | null;
 };
-

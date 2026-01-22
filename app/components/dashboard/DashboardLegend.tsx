@@ -15,7 +15,7 @@ export default function DashboardLegend() {
       {legendItems.map((item) => (
         <span
           key={item.label}
-          className="rounded-full border border-[color:var(--border-200)] bg-white px-2.5 py-1 text-slate-500"
+          className="rounded-full border border-border bg-white px-2.5 py-1 text-slate-500"
         >
           {item.label}: {item.value}
         </span>
