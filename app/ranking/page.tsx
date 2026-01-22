@@ -1,12 +1,12 @@
-﻿import DashboardShell from "./components/DashboardShell";
-import DashboardClient from "./components/dashboard/DashboardClient";
-import { getEnamedData } from "./lib/enamed";
+import DashboardShell from "../components/DashboardShell";
+import RankingClient from "../components/ranking/RankingClient";
+import { getEnamedData } from "../lib/enamed";
 
-export default async function Home() {
+export default async function RankingPage() {
   const { rows, options, lastUpdated } = await getEnamedData();
 
   return (
-    <DashboardShell active="dashboard" lastUpdated={lastUpdated}>
+    <DashboardShell active="ranking" lastUpdated={lastUpdated}>
       <section className="rounded-md border border-[color:var(--border-200)] bg-white p-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -14,7 +14,7 @@ export default async function Home() {
               ENAMED
             </p>
             <h1 className="text-2xl font-semibold text-[color:var(--ink-900)]">
-              Dashboard 2025
+              Ranking 2025
             </h1>
           </div>
           <div className="flex items-center gap-2 text-xs font-semibold">
@@ -28,8 +28,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <DashboardClient rows={rows} options={options} />
+      <RankingClient rows={rows} options={options} />
     </DashboardShell>
   );
 }
-
