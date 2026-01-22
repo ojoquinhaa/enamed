@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ENAMED 2025 Dashboard
 
-## Getting Started
+Dashboard visual para analise dos resultados do ENAMED 2025, com ranking de IES, tabela detalhada, mapa por UF e graficos de distribuicao e correlacao.
 
-First, run the development server:
+## Principais recursos
+- Ranking ajustado por amostra (score) com ordenacao asc/desc.
+- Tabela estilo planilha com filtros por coluna e ordenacao rapida.
+- Mapa por UF com metricas selecionaveis e painel lateral de detalhes.
+- Graficos essenciais: distribuicoes, dispersao e pareto.
+- Responsivo e focado em leitura rapida.
 
+## Paginas
+- `/` Dashboard
+- `/ranking` Ranking de IES, cursos e UFs
+- `/tabela` Tabela completa com filtros
+- `/mapas` Mapa interativo por UF
+- `/sobre` Contexto institucional
+
+## Metricas (resumo)
+- Performance: `100 x media(conceito/5, prof/100)`
+- Proficiencia: `% acima da proficiencia`
+- Taxa: `participantes / inscritos`
+
+## Stack
+- Next.js (App Router)
+- React 19
+- Tailwind CSS
+- ECharts (graficos e mapa)
+
+## Como rodar
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Dados
+Os dados sao carregados localmente via `app/lib/enamed`. O GeoJSON de UFs fica em `public/data/br-uf.geojson`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
+- `pnpm dev` desenvolvimento
+- `pnpm build` build de producao
+- `pnpm start` servico local
+- `pnpm lint` lint
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Observacoes
+Este projeto e informativo e nao substitui comunicados oficiais. Para uso institucional, cite a fonte original dos dados.
