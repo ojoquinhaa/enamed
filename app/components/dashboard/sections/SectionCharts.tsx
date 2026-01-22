@@ -88,7 +88,7 @@ export default function SectionCharts({
       )
       .map((course) => [
         course.participantes,
-        course.performance * 100,
+        (course.performance ?? 0) * 100,
         typeof course.conceito === "number" ? course.conceito : 0,
         course.inscritos || course.participantes,
       ]);
