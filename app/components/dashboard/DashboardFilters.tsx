@@ -87,7 +87,7 @@ export default function DashboardFilters({
             </span>
             <input
               className="w-full rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
-              placeholder="IES, municipio ou sigla"
+              placeholder="IES, município ou sigla"
               value={filters.search}
               onChange={(event) => onChange({ search: event.target.value })}
             />
