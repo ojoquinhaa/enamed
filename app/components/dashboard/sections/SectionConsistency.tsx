@@ -11,13 +11,13 @@ type SectionConsistencyProps = {
 export default function SectionConsistency({ iesConsistency }: SectionConsistencyProps) {
   return (
     <SectionCard
-      title="Consistencia"
+      title="Consistência"
       description="Variacao interna por IES."
     >
       <MiniTable
         columns={[
           { label: "IES" },
-          { label: "Indice", align: "right" },
+            { label: "Índice", align: "right" },
         ]}
         rows={iesConsistency
           .filter((item) => typeof item.consistency === "number")

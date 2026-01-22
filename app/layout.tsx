@@ -43,10 +43,8 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     images: [
       {
-        url: "/meta/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Analise da Tabela do ENAMED",
+        url: "/images/enamed-logo.png",
+        alt: "Enamed",
       },
     ],
   },
@@ -55,7 +53,7 @@ export const metadata: Metadata = {
     title: "ENAMED 2025 | Painel de Medicina",
     description:
       "Analise visual do ENAMED 2025 para cursos de medicina, com rankings, mapas e indicadores.",
-    images: ["/meta/og-image.png"],
+    images: ["/images/enamed-logo.png"],
   },
   robots: {
     index: true,

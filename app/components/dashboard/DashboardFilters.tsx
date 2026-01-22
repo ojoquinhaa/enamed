@@ -68,7 +68,7 @@ export default function DashboardFilters({
             options={options.ies}
           />
           <FilterSelect
-            label="Organizacao"
+            label="Organização"
             value={filters.organizacao}
             onChange={(value) => onChange({ organizacao: value })}
             options={options.organizacoes}

@@ -21,7 +21,7 @@ export default function SectionOutliers({
   const emptyRow: [string, string] = ["Sem dados", "-"];
   return (
     <SectionCard
-      title="Destaques e Excecoes"
+      title="Destaques e Exceções"
       description="Casos fora da curva por conceito, escala e prof."
     >
       <div className="grid gap-6 lg:grid-cols-2">

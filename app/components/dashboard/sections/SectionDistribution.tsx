@@ -14,7 +14,7 @@ type SectionDistributionProps = {
 export default function SectionDistribution({ items }: SectionDistributionProps) {
   return (
     <SectionCard
-      title="Distribuicao Percentual"
+      title="Distribuição Percentual"
       description="Perfil geral dos conceitos."
     >
       <BarList

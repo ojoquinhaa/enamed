@@ -316,13 +316,13 @@ export default function SectionCharts({
 
   return (
     <SectionCard
-      title="Graficos essenciais"
-      description="Distribuicoes e relacoes para leitura rapida."
+      title="Gráficos essenciais"
+      description="Distribuições e relações para leitura rápida."
     >
       <div className="grid min-w-0 gap-6">
         <div className="grid min-w-0 gap-6 lg:grid-cols-2">
           <ChartShell
-            title="Distribuicao de conceitos por UF"
+            title="Distribuição de conceitos por UF"
             description="Percentual de conceitos (C1-C5) nos estados com mais cursos."
           >
             <ReactECharts
@@ -331,8 +331,8 @@ export default function SectionCharts({
             />
           </ChartShell>
           <ChartShell
-            title="Distribuicao de conceitos por organizacao"
-            description="Percentual de conceitos por tipo de organizacao."
+            title="Distribuição de conceitos por organização"
+            description="Percentual de conceitos por tipo de organização."
           >
             <ReactECharts
               option={stackedOrgOption}
@@ -342,7 +342,7 @@ export default function SectionCharts({
         </div>
         <div className="grid min-w-0 gap-6 lg:grid-cols-2">
           <ChartShell
-            title="Histograma de proficiencia"
+            title="Histograma de proficiência"
             description="Quantidade de cursos por faixa de %."
           >
             <ReactECharts
@@ -361,7 +361,7 @@ export default function SectionCharts({
           </ChartShell>
         </div>
         <ChartShell
-          title="Dispersao: participantes vs performance"
+          title="Dispersão: participantes vs performance"
           description="Bolha = inscritos. Cor = conceito."
           heightClass="h-72"
         >

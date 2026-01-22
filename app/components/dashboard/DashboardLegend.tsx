@@ -1,5 +1,5 @@
 const legendItems = [
-  { label: "Prof", value: "% proficiencia" },
+  { label: "Prof", value: "% proficiência" },
   { label: "Conc", value: "conceito" },
   { label: "Perf", value: "score conc+prof" },
   { label: "Part", value: "participantes" },

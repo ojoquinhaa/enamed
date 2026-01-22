@@ -19,7 +19,7 @@ export default function SectionGeography({
   return (
     <SectionCard
       title="Geografia"
-      description="Ponderacoes e recortes territoriais."
+      description="Ponderações e recortes territoriais."
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <MiniTable
@@ -38,7 +38,7 @@ export default function SectionGeography({
         />
         <MiniTable
           columns={[
-            { label: "Municipio" },
+            { label: "Município" },
             { label: "Cursos", align: "right" },
             { label: "Perf", align: "right" },
           ]}
@@ -56,7 +56,7 @@ export default function SectionGeography({
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <MiniTable
           columns={[
-            { label: "Municipio" },
+            { label: "Município" },
             { label: "Perf", align: "right" },
             { label: "Prof", align: "right" },
           ]}
@@ -72,7 +72,7 @@ export default function SectionGeography({
         />
         <MiniTable
           columns={[
-            { label: "Area" },
+            { label: "Área" },
             { label: "Conceito", align: "right" },
             { label: "Prof", align: "right" },
             { label: "Taxa", align: "right" },

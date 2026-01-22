@@ -290,7 +290,7 @@ export default function TableClient({ rows, options }: TableClientProps) {
               options={iesOptions}
             />
             <FilterSelect
-              label="Organizacao"
+              label="Organização"
               value={filters.organizacao}
               onChange={(value) =>
                 setFilters((prev) => ({ ...prev, organizacao: value }))
@@ -313,7 +313,7 @@ export default function TableClient({ rows, options }: TableClientProps) {
               </span>
               <input
                 className="rounded-md border border-border bg-white px-3 py-2 text-sm text-slate-700 focus:border-brand focus:outline-none"
-                placeholder="IES, municipio ou sigla"
+                placeholder="IES, município ou sigla"
                 value={filters.search}
                 onChange={(event) =>
                   setFilters((prev) => ({
@@ -348,7 +348,7 @@ export default function TableClient({ rows, options }: TableClientProps) {
             Filtros nos cabecalhos
           </div>
           <div className="rounded-md border border-border bg-(--surface-soft) px-4 py-2 text-xs font-semibold text-slate-600">
-            Pagina {page} de {totalPages}
+            Página {page} de {totalPages}
           </div>
         </div>
 
@@ -360,9 +360,9 @@ export default function TableClient({ rows, options }: TableClientProps) {
                 <th className="px-4 py-2 text-left">Localidade</th>
                 <th className="px-4 py-2 text-left">
                   <div className="inline-flex items-center gap-2">
-                    <span>Organizacao</span>
-                    <HeaderDropdown label="Filtrar organizacao" align="left">
-                      <DropdownTitle label="Organizacao" />
+                    <span>Organização</span>
+                    <HeaderDropdown label="Filtrar organização" align="left">
+                      <DropdownTitle label="Organização" />
                       <CheckboxOption
                         label="Publica"
                         checked={columnFilters.organizacao.includes("publica")}
@@ -421,7 +421,7 @@ export default function TableClient({ rows, options }: TableClientProps) {
                   <div className="inline-flex items-center justify-end gap-2">
                     <span>Participantes</span>
                     <HeaderDropdown label="Ordenar participantes">
-                      <DropdownTitle label="Ordenacao" />
+                      <DropdownTitle label="Ordenação" />
                       <DropdownButton
                         label="Maior"
                         active={
@@ -455,9 +455,9 @@ export default function TableClient({ rows, options }: TableClientProps) {
                 </th>
                 <th className="px-4 py-2 text-right">
                   <div className="inline-flex items-center justify-end gap-2">
-                    <span>% Proficiencia</span>
-                    <HeaderDropdown label="Ordenar proficiencia">
-                      <DropdownTitle label="Ordenacao" />
+                    <span>% Proficiência</span>
+                    <HeaderDropdown label="Ordenar proficiência">
+                      <DropdownTitle label="Ordenação" />
                       <DropdownButton
                         label="Maior"
                         active={sortBy === "percentual" && direction === "desc"}
@@ -589,7 +589,7 @@ export default function TableClient({ rows, options }: TableClientProps) {
               disabled={page === totalPages}
               onClick={() => setPage((prev) => Math.min(totalPages, prev + 1))}
             >
-              Proxima
+              Próxima
             </button>
           </div>
         </div>

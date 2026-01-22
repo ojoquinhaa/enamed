@@ -22,7 +22,7 @@ export default function SectionInstitutional({
   return (
     <SectionCard
       title="Institucional"
-      description="Comparativo por categoria, organizacao e setor."
+      description="Comparativo por categoria, organização e setor."
     >
       <div className="grid gap-6 lg:grid-cols-3">
         <MiniTable

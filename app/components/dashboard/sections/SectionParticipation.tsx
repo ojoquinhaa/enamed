@@ -21,8 +21,8 @@ export default function SectionParticipation({
 }: SectionParticipationProps) {
   return (
     <SectionCard
-      title="Participacao"
-      description="Taxa de adesao e impacto no desempenho."
+      title="Participação"
+      description="Taxa de adesão e impacto no desempenho."
     >
       <div className="flex flex-col gap-4">
         <div className="mx-auto w-full max-w-xl">
@@ -35,7 +35,7 @@ export default function SectionParticipation({
                     ? "-"
                     : corrParticipationConcept.toFixed(2),
                 hint:
-                  "Quase nenhuma relacao entre taxa de participacao e conceito.",
+                  "Quase nenhuma relação entre taxa de participação e conceito.",
               },
               {
                 label: "Taxa x Prof",
@@ -44,7 +44,7 @@ export default function SectionParticipation({
                     ? "-"
                     : corrParticipationProf.toFixed(2),
                 hint:
-                  "Quase nenhuma relacao entre taxa de participacao e proficiencia.",
+                  "Quase nenhuma relação entre taxa de participação e proficiência.",
               },
               {
                 label: "Taxa x Perf",
@@ -53,7 +53,7 @@ export default function SectionParticipation({
                     ? "-"
                     : corrParticipationPerf.toFixed(2),
                 hint:
-                  "Quase nenhuma relacao entre taxa de participacao e performance.",
+                  "Quase nenhuma relação entre taxa de participação e performance.",
               },
             ]}
             columns="grid gap-2 sm:grid-cols-3"

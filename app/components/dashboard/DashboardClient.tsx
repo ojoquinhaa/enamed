@@ -74,7 +74,7 @@ export default function DashboardClient({
     [options.ies],
   );
   const orgOptions = useMemo(
-    () => buildOptions(options.organizacoes, "Todas as organizacoes"),
+    () => buildOptions(options.organizacoes, "Todas as organizações"),
     [options.organizacoes],
   );
   const categoriaOptions = useMemo(
@@ -720,16 +720,16 @@ export default function DashboardClient({
             value: numberFormatter.format(totalParticipants),
           },
           {
-            label: "Proficiencia media",
+            label: "Proficiência média",
             value: formatPercent(profMedia),
             tone: "brand",
           },
           {
-            label: "Conceito medio",
+            label: "Conceito médio",
             value: conceitoMedio ? conceitoMedio.toFixed(2) : "-",
           },
           {
-            label: "Taxa participacao",
+            label: "Taxa participação",
             value: formatRate(taxaParticipacao),
           },
         ]}

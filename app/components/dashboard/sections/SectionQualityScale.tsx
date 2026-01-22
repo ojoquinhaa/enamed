@@ -34,7 +34,7 @@ export default function SectionQualityScale({
   return (
     <SectionCard
       title="Qualidade vs Escala"
-      description="Relacao entre tamanho, participacao e desempenho."
+      description="Relação entre tamanho, participação e desempenho."
     >
       <div className="flex flex-col gap-4">
         <div className="mx-auto w-full max-w-2xl">
@@ -47,7 +47,7 @@ export default function SectionQualityScale({
                     ? "-"
                     : corrParticipantsConcept.toFixed(2),
                 hint:
-                  "Cursos com mais participantes tendem a ter conceito um pouco menor; relacao fraca.",
+                  "Cursos com mais participantes tendem a ter conceito um pouco menor; relação fraca.",
               },
               {
                 label: "Part x Prof",
@@ -56,7 +56,7 @@ export default function SectionQualityScale({
                     ? "-"
                     : corrParticipantsProf.toFixed(2),
                 hint:
-                  "Mais participantes tende a menor % de proficiencia; relacao fraca.",
+                  "Mais participantes tende a menor % de proficiência; relação fraca.",
               },
               {
                 label: "Part x Perf",
@@ -65,7 +65,7 @@ export default function SectionQualityScale({
                     ? "-"
                     : corrParticipantsPerf.toFixed(2),
                 hint:
-                  "Mais participantes tende a menor performance; relacao fraca.",
+                  "Mais participantes tende a menor performance; relação fraca.",
               },
               {
                 label: "IES Cursos x Perf",
@@ -74,7 +74,7 @@ export default function SectionQualityScale({
                     ? "-"
                     : corrIesCoursesPerformance.toFixed(2),
                 hint:
-                  "Quase nenhuma relacao entre qtde de cursos por IES e performance media.",
+                  "Quase nenhuma relação entre qtde de cursos por IES e performance média.",
               },
             ]}
             columns="grid gap-2 sm:grid-cols-2"

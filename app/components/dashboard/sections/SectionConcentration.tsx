@@ -24,7 +24,7 @@ export default function SectionConcentration({
 }: SectionConcentrationProps) {
   return (
     <SectionCard
-      title="Concentracao"
+      title="Concentração"
       description="Conceitos altos/baixos e volume de participantes."
     >
       <div className="grid gap-6 lg:grid-cols-3">

@@ -12,7 +12,7 @@ export default function SectionUfIes({ ufTop, iesTop }: SectionUfIesProps) {
   return (
     <SectionCard
       title="UF e IES"
-      description="Escala e desempenho por unidade e instituicao."
+      description="Escala e desempenho por unidade e instituição."
     >
       <div className="grid gap-6 lg:grid-cols-2">
         <MiniTable

@@ -34,8 +34,8 @@ export default function SectionSimulation({
 
   return (
     <SectionCard
-      title="Simulacoes"
-      description="Cenarios hipoteticos para proficiencia."
+      title="Simulações"
+      description="Cenários hipotéticos para proficiência."
     >
       <div className="mb-4 flex items-center gap-2 text-xs text-slate-500">
         <span className="rounded-full border border-[color:var(--border-200)] bg-white px-3 py-1 font-semibold uppercase tracking-[0.12em]">
@@ -47,7 +47,7 @@ export default function SectionSimulation({
       </div>
       <MiniTable
         columns={[
-          { label: "Cenario" },
+          { label: "Cenário" },
           { label: "Proficientes", align: "right" },
           { label: "Taxa", align: "right" },
         ]}
